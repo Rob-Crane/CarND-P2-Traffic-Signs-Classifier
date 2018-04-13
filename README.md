@@ -54,6 +54,5 @@ The web images of German traffic signs were correctly predicted for three of the
 ## Project (Repository Contents)
 
 * `Traffic_Sign_Classifier.ipynb` - Jupyter notebook that demonstrates inference on the test dataset and on five example images
-* `Traffic_Sign_Classifier.html` - static version of above
 * `signs_input.py` - Using the TensorFlow DataSet API, produces repeating batches of training, validation, and test data
 * `signs.py` - Defines operations to train the network.  Training monitoring is accomplished using Tensorboard.  The trained model is saved after final training step reached.
