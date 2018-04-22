@@ -195,7 +195,7 @@ THRESHOLD_BUFFER = 5
 (train_images, train_labels) = get_train_batch(batch_size=TRAIN_BATCH_SIZE)
 
 # create the network with specified hidden layers
-inference = get_network(43, L2_SCALE, HIDDEN_UNITS)
+inference = get_network(10, L2_SCALE, HIDDEN_UNITS)
 
 train_logits = inference(train_images)
 

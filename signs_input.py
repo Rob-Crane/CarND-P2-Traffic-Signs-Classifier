@@ -3,20 +3,33 @@ import pickle
 import tensorflow as tf
 from tensorflow.python import debug as tf_debug
 
-training_file = 'train.p'
-validation_file = 'valid.p'
-testing_file = 'test.p'
+# training_file = 'train.p'
+# validation_file = 'valid.p'
+# testing_file = 'test.p'
 
-with open(training_file, mode='rb') as f:
-    train = pickle.load(f)
-with open(validation_file, mode='rb') as f:
-    valid = pickle.load(f)
-with open(testing_file, mode='rb') as f:
-    test = pickle.load(f)
+# with open(training_file, mode='rb') as f:
+    # train = pickle.load(f)
+# with open(validation_file, mode='rb') as f:
+    # valid = pickle.load(f)
+# with open(testing_file, mode='rb') as f:
+    # test = pickle.load(f)
                             
-X_train, y_train = train['features'], train['labels']
-X_valid, y_valid = valid['features'], valid['labels']
-X_test, y_test = test['features'], test['labels']
+# X_train, y_train = train['features'], train['labels']
+# X_valid, y_valid = valid['features'], valid['labels']
+# X_test, y_test = test['features'], test['labels']
+
+# Copied from Udacity
+from keras.datasets import cifar10
+(X_train, y_train), (X_test, y_test) = cifar10.load_data()
+# y_train.shape is 2d, (50000, 1). While Keras is smart enough to handle this
+# it's a good idea to flatten the array.
+
+y_train = y_train.reshape(-1)
+y_test = y_test.reshape(-1)
+
+from sklearn.model_selection import train_test_split
+X_train, X_valid, y_train, y_valid = train_test_split(X_train, y_train, test_size=0.3, random_state=42, stratify = y_train)
+
 n_train = len(X_train)
 
 IMAGE_SIZE=24
